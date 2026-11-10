@@ -1,5 +1,5 @@
 import { useRouter } from 'vue-router';
-import { Message } from '@ekworp/arco-design-vue';
+import Message from '@ekworp/arco-design-vue/es/message';
 
 import { useUserStore } from '@/store';
 

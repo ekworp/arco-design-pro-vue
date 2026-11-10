@@ -17,6 +17,9 @@ export default function configCompressPlugin(
       compressPlugin({
         ext: '.gz',
         deleteOriginFile,
+        // vite-plugin-compression formats absolute Windows paths incorrectly
+        // in its verbose logger; the generated files themselves are correct.
+        verbose: false,
       })
     );
   }
@@ -27,6 +30,7 @@ export default function configCompressPlugin(
         ext: '.br',
         algorithm: 'brotliCompress',
         deleteOriginFile,
+        verbose: false,
       })
     );
   }

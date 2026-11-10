@@ -66,7 +66,7 @@
 <script lang="ts" setup>
   import { ref, reactive } from 'vue';
   import { useRouter } from 'vue-router';
-  import { Message } from '@ekworp/arco-design-vue';
+  import Message from '@ekworp/arco-design-vue/es/message';
   import { ValidatedError } from '@ekworp/arco-design-vue/es/form/interface';
   import { useI18n } from 'vue-i18n';
   import { useStorage } from '@vueuse/core';

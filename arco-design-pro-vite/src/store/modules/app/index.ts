@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { Notification } from '@ekworp/arco-design-vue';
+import Notification from '@ekworp/arco-design-vue/es/notification';
 import type { RouteRecordNormalized } from 'vue-router';
 import defaultSettings from '@/config/settings.json';
 import { getMenuList } from '@/api/user';

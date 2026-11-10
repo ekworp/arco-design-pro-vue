@@ -1,6 +1,7 @@
 import axios from 'axios';
 import type { InternalAxiosRequestConfig, AxiosResponse } from 'axios';
-import { Message, Modal } from '@ekworp/arco-design-vue';
+import Message from '@ekworp/arco-design-vue/es/message';
+import Modal from '@ekworp/arco-design-vue/es/modal';
 import { useUserStore } from '@/store';
 import { getToken } from '@/utils/auth';
 

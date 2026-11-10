@@ -194,7 +194,7 @@
 
 <script lang="ts" setup>
   import { computed, ref, inject } from 'vue';
-  import { Message } from '@ekworp/arco-design-vue';
+  import Message from '@ekworp/arco-design-vue/es/message';
   import { useDark, useToggle, useFullscreen } from '@vueuse/core';
   import { useAppStore, useUserStore } from '@/store';
   import { LOCALE_OPTIONS } from '@/locale';
