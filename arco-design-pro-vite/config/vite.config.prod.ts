@@ -1,7 +1,7 @@
 import { mergeConfig } from 'vite';
-import baseConfig from './vite.config.base';
-import configCompressPlugin from './plugin/compress';
-import configVisualizerPlugin from './plugin/visualizer';
+import baseConfig from './vite.config.base.ts';
+import configCompressPlugin from './plugin/compress.ts';
+import configVisualizerPlugin from './plugin/visualizer.ts';
 
 export default mergeConfig(
   {

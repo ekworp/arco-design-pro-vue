@@ -18,6 +18,6 @@
     "tsBuildInfoFile": "./node_modules/.cache/vue-tsc/tsconfig.tsbuildinfo",
     "types": ["vite/client", "vue"]
   },
-  "include": ["src/**/*", "src/**/*.vue"],
+  "include": ["src/**/*", "src/**/*.vue", "components.d.ts"],
   "exclude": ["node_modules"]
 }

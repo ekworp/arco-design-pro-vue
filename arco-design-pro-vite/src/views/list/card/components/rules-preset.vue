@@ -41,7 +41,10 @@
   import useRequest from '@/hooks/request';
   import CardWrap from './card-wrap.vue';
 
-  const defaultValue: ServiceRecord[] = new Array(6).fill({});
+  const defaultValue: ServiceRecord[] = Array.from(
+    { length: 6 },
+    () => ({}) as ServiceRecord
+  );
   const { loading, response: renderData } = useRequest<ServiceRecord[]>(
     queryRulesPresetList,
     defaultValue

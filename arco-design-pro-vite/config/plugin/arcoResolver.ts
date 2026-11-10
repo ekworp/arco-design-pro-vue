@@ -1,19 +1,40 @@
-/**
- * If you use the template method for development, you can use the unplugin-vue-components plugin to enable on-demand loading support.
- * 按需引入
- * https://github.com/antfu/unplugin-vue-components
- * https://arco.design/vue/docs/start
- * Although the Pro project is full of imported components, this plugin will be used by default.
- * 虽然Pro项目中是全量引入组件，但此插件会默认使用。
- */
 import Components from 'unplugin-vue-components/vite';
 import { ArcoResolver } from 'unplugin-vue-components/resolvers';
 
+const ARCO_PACKAGE = '@ekworp/arco-design-vue';
+const OFFICIAL_ARCO_PACKAGE = '@arco-design/web-vue';
+
+function replacePackage(value: string | string[] | undefined) {
+  if (Array.isArray(value)) {
+    return value.map((item) => item.replace(OFFICIAL_ARCO_PACKAGE, ARCO_PACKAGE));
+  }
+  return value?.replace(OFFICIAL_ARCO_PACKAGE, ARCO_PACKAGE);
+}
+
 export default function configArcoResolverPlugin() {
-  const arcoResolverPlugin = Components({
-    dirs: [], // Avoid parsing src/components.  避免解析到src/components
-    deep: false,
-    resolvers: [ArcoResolver()],
+  const resolver = ArcoResolver({
+    importStyle: 'css',
+    resolveIcons: true,
   });
-  return arcoResolverPlugin;
+
+  return Components({
+    dts: 'components.d.ts',
+    dirs: [],
+    deep: false,
+    resolvers: [
+      {
+        ...resolver,
+        resolve(name) {
+          const result = resolver.resolve(name);
+          if (!result || typeof result !== 'object') return result;
+
+          return {
+            ...result,
+            from: result.from.replace(OFFICIAL_ARCO_PACKAGE, ARCO_PACKAGE),
+            sideEffects: replacePackage(result.sideEffects),
+          };
+        },
+      },
+    ],
+  });
 }

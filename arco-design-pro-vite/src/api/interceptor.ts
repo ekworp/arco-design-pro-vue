@@ -62,11 +62,11 @@ axios.interceptors.response.use(
       }
       return Promise.reject(new Error(res.msg || 'Error'));
     }
-    return res as unknown as AxiosResponse<HttpResponse>;
+    return response;
   },
   (error) => {
     Message.error({
-      content: error.msg || 'Request Error',
+      content: error?.message || error?.msg || 'Request Error',
       duration: 5 * 1000,
     });
     return Promise.reject(error);

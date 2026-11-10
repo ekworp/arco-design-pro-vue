@@ -38,7 +38,10 @@
   import { queryMyTeamList, MyTeamRecord } from '@/api/user-center';
   import useRequest from '@/hooks/request';
 
-  const defaultValue: MyTeamRecord[] = new Array(4).fill({});
+  const defaultValue: MyTeamRecord[] = Array.from(
+    { length: 4 },
+    () => ({}) as MyTeamRecord
+  );
   const { loading, response: teamList } = useRequest<MyTeamRecord[]>(
     queryMyTeamList,
     defaultValue

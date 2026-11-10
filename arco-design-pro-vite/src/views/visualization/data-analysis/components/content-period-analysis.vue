@@ -75,7 +75,7 @@
         },
         axisLabel: {
           color: '#86909C',
-          formatter(value: number, idx: number) {
+          formatter(value: string, idx: number) {
             if (idx === 0) return '';
             if (idx === xAxis.value.length - 1) return '';
             return `${value}`;

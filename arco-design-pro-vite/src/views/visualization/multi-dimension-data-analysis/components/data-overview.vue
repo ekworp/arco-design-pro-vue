@@ -35,7 +35,7 @@
 <script lang="ts" setup>
   import { computed, ref } from 'vue';
   import { useI18n } from 'vue-i18n';
-  import { LineSeriesOption } from 'echarts';
+  import type { LineSeriesOption } from 'echarts';
   import { queryDataOverview } from '@/api/visualization';
   import useLoading from '@/hooks/loading';
   import { ToolTipFormatterParams } from '@/types/echarts';
@@ -155,7 +155,7 @@
         boundaryGap: false,
         axisLabel: {
           color: '#4E5969',
-          formatter(value: number, idx: number) {
+            formatter(value: string, idx: number) {
             if (idx === 0) return '';
             if (idx === xAxis.value.length - 1) return '';
             return `${value}`;

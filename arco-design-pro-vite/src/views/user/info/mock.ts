@@ -64,7 +64,7 @@ setupMock({
         },
       ];
       return successResponseWrap(
-        new Array(6).fill(null).map((_item, index) => ({
+        Array.from({ length: 6 }).fill(null).map((_item, index) => ({
           id: index,
           name: units[index].name,
           description: units[index].description,
@@ -77,7 +77,7 @@ setupMock({
     // 最新动态
     Mock.mock(new RegExp('/api/user/latest-activity'), () => {
       return successResponseWrap(
-        new Array(7).fill(null).map((_item, index) => ({
+        Array.from({ length: 7 }).fill(null).map((_item, index) => ({
           id: index,
           title: '发布了项目 Arco Design System',
           description: '企业级产品设计系统',

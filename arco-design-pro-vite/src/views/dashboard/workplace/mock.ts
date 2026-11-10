@@ -106,7 +106,7 @@ setupMock({
       const presetData = [58, 81, 53, 90, 64, 88, 49, 79];
       const getLineData = () => {
         const count = 8;
-        return new Array(count).fill(0).map((el, idx) => ({
+        return Array.from({ length: count }, (_el, idx) => ({
           x: dayjs()
             .day(idx - 2)
             .format('YYYY-MM-DD'),

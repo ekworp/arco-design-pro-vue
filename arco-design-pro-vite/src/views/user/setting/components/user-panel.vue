@@ -52,6 +52,7 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue';
+  import type { AxiosProgressEvent } from 'axios';
   import type {
     FileItem,
     RequestOption,
@@ -107,12 +108,15 @@
       onProgress(20);
       const formData = new FormData();
       formData.append(name as string, fileItem.file as Blob);
-      const onUploadProgress = (event: ProgressEvent) => {
+      const onUploadProgress = (event: AxiosProgressEvent) => {
         let percent;
-        if (event.total > 0) {
+        if (event.total && event.total > 0) {
           percent = (event.loaded / event.total) * 100;
         }
-        onProgress(parseInt(String(percent), 10), event);
+        onProgress(
+          parseInt(String(percent), 10),
+          event as unknown as ProgressEvent
+        );
       };
 
       try {

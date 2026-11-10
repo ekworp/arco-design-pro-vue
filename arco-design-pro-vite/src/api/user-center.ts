@@ -1,4 +1,5 @@
 import axios from 'axios';
+import type { AxiosProgressEvent } from 'axios';
 
 export interface MyProjectRecord {
   id: number;
@@ -80,7 +81,7 @@ export function userUploadApi(
   data: FormData,
   config: {
     controller: AbortController;
-    onUploadProgress?: (progressEvent: any) => void;
+    onUploadProgress?: (progressEvent: AxiosProgressEvent) => void;
   }
 ) {
   // const controller = new AbortController();

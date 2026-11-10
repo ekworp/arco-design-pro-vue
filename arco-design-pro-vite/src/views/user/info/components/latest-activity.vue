@@ -46,7 +46,9 @@
   import useLoading from '@/hooks/loading';
 
   const { loading, setLoading } = useLoading(true);
-  const activityList = ref<LatestActivity[]>(new Array(7).fill({}));
+  const activityList = ref<LatestActivity[]>(
+    Array.from({ length: 7 }, () => ({}) as LatestActivity)
+  );
   const fetchData = async () => {
     try {
       const { data } = await queryLatestActivity();

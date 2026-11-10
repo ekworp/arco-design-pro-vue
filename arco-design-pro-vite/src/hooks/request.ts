@@ -19,6 +19,9 @@ export default function useRequest<T>(
     .then((res) => {
       response.value = res.data as unknown as UnwrapRef<T>;
     })
+    .catch(() => {
+      // The interceptor already reports request errors to the user.
+    })
     .finally(() => {
       setLoading(false);
     });

@@ -1,26 +1,30 @@
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import svgLoader from 'vite-svg-loader';
-import configArcoStyleImportPlugin from './plugin/arcoStyleImport';
+import configArcoResolverPlugin from './plugin/arcoResolver.ts';
+import configArcoStyleImportPlugin from './plugin/arcoStyleImport.ts';
+
+const rootDir = import.meta.dirname;
 
 export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
     svgLoader({ svgoConfig: {} }),
+    configArcoResolverPlugin(),
     configArcoStyleImportPlugin(),
   ],
   resolve: {
     alias: [
       {
         find: '@',
-        replacement: resolve(__dirname, '../src'),
+        replacement: resolve(rootDir, '../src'),
       },
       {
         find: 'assets',
-        replacement: resolve(__dirname, '../src/assets'),
+        replacement: resolve(rootDir, '../src/assets'),
       },
       {
         find: 'vue-i18n',
@@ -41,7 +45,8 @@ export default defineConfig({
       less: {
         modifyVars: {
           hack: `true; @import (reference) "${resolve(
-            'src/assets/style/breakpoint.less'
+            rootDir,
+            '../src/assets/style/breakpoint.less'
           )}";`,
         },
         javascriptEnabled: true,
