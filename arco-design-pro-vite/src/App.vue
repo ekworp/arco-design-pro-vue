@@ -7,8 +7,8 @@
 
 <script lang="ts" setup>
   import { computed } from 'vue';
-  import enUS from '@arco-design/web-vue/es/locale/lang/en-us';
-  import zhCN from '@arco-design/web-vue/es/locale/lang/zh-cn';
+  import enUS from '@ekworp/arco-design-vue/es/locale/lang/en-us';
+  import zhCN from '@ekworp/arco-design-vue/es/locale/lang/zh-cn';
   import GlobalSetting from '@/components/global-setting/index.vue';
   import useLocale from '@/hooks/locale';
 

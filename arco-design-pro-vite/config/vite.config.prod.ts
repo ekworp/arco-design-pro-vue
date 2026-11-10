@@ -2,8 +2,6 @@ import { mergeConfig } from 'vite';
 import baseConfig from './vite.config.base';
 import configCompressPlugin from './plugin/compress';
 import configVisualizerPlugin from './plugin/visualizer';
-import configArcoResolverPlugin from './plugin/arcoResolver';
-import configImageminPlugin from './plugin/imagemin';
 
 export default mergeConfig(
   {
@@ -11,16 +9,21 @@ export default mergeConfig(
     plugins: [
       configCompressPlugin('gzip'),
       configVisualizerPlugin(),
-      configArcoResolverPlugin(),
-      configImageminPlugin(),
     ],
     build: {
       rollupOptions: {
         output: {
-          manualChunks: {
-            arco: ['@arco-design/web-vue'],
-            chart: ['echarts', 'vue-echarts'],
-            vue: ['vue', 'vue-router', 'pinia', '@vueuse/core', 'vue-i18n'],
+          manualChunks(id) {
+            if (id.includes('node_modules/@ekworp/arco-design-vue')) return 'arco';
+            if (id.includes('node_modules/echarts') || id.includes('node_modules/vue-echarts')) return 'chart';
+            if (
+              id.includes('node_modules/vue/') ||
+              id.includes('node_modules/vue-router') ||
+              id.includes('node_modules/pinia') ||
+              id.includes('node_modules/@vueuse') ||
+              id.includes('node_modules/vue-i18n')
+            ) return 'vue';
+            return undefined;
           },
         },
       },

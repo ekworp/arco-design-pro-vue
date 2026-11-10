@@ -251,7 +251,7 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { FormInstance } from '@arco-design/web-vue/es/form';
+  import { FormInstance } from '@ekworp/arco-design-vue/es/form';
   import useLoading from '@/hooks/loading';
 
   const formData = ref({});

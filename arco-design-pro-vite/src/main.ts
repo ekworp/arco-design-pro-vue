@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
-import ArcoVue from '@arco-design/web-vue';
-import ArcoVueIcon from '@arco-design/web-vue/es/icon';
+import ArcoVue from '@ekworp/arco-design-vue';
+import ArcoVueIcon from '@ekworp/arco-design-vue/es/icon';
 import globalComponents from '@/components';
 import router from './router';
 import store from './store';

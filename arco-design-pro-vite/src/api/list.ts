@@ -1,6 +1,6 @@
 import axios from 'axios';
 import qs from 'query-string';
-import type { DescData } from '@arco-design/web-vue/es/descriptions/interface';
+import type { DescData } from '@ekworp/arco-design-vue/es/descriptions/interface';
 
 export interface PolicyRecord {
   id: string;

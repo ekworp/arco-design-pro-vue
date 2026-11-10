@@ -24,7 +24,7 @@
   import type {
     TableColumnData,
     TableData,
-  } from '@arco-design/web-vue/es/table/interface.d';
+  } from '@ekworp/arco-design-vue/es/table/interface.d';
 
   interface PreviewRecord {
     cover: string;

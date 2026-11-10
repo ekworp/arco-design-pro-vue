@@ -61,7 +61,7 @@
         },
         series: {
           name: 'total',
-          data,
+           data: data.value,
           type: 'bar',
           barWidth: 7,
           itemStyle: {
@@ -71,7 +71,7 @@
       };
     });
     return {
-      data,
+             data: data.value,
       chartOption,
     };
   };
@@ -125,7 +125,7 @@
       };
     });
     return {
-      data,
+             data: data.value,
       chartOption,
     };
   };
@@ -163,7 +163,7 @@
             label: {
               show: false,
             },
-            data,
+             data: data.value,
           },
         ],
       };
@@ -226,9 +226,9 @@
       } else if (props.chartType === 'line') {
         chartData.forEach((el) => {
           if (el.name === '2021') {
-            lineData.value[0].push(el.y);
+             lineData[0].push(el.y);
           } else {
-            lineData.value[1].push(el.y);
+             lineData[1].push(el.y);
           }
         });
         chartOption.value = lineChartOption.value;
