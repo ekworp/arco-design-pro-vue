@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@11.27.0",
   "author": "ArcoDesign Team",
   "license": "MIT",
   "scripts": {
@@ -17,7 +16,7 @@
     "lint": "oxlint .",
     "lint:fix": "oxlint --fix .",
     "lint-staged": "pnpx lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
