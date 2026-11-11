@@ -8,7 +8,7 @@
 
 Admin 中后台管理页面，创新的多架构方案。
 
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/arco-design/arco-design-pro/blob/main/LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ekworp/arco-design-pro-vue/blob/main/LICENSE)
 
 </div>
 
@@ -50,9 +50,9 @@ $ arco init my-project
 
 ## 💎 Changelog
 
-- [中文版](https://github.com/arco-design/arco-design-pro-vue/blob/main/docs/changelog.zh-CN.md)
+- [中文版](https://github.com/ekworp/arco-design-pro-vue/blob/main/docs/changelog.zh-CN.md)
 
-- [英文版](https://github.com/arco-design/arco-design-pro-vue/blob/main/docs/changelog.md)
+- [英文版](https://github.com/ekworp/arco-design-pro-vue/blob/main/docs/changelog.md)
 
 ## LICENSE
 

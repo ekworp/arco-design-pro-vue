@@ -6,7 +6,7 @@
 
 An out-of-the-box solution to quickly build enterprise-level applications based on [Arco Design](https://arco.design/).
 
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/arco-design/arco-design-pro/blob/main/LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ekworp/arco-design-pro-vue/blob/main/LICENSE)
 
 </div>
 
@@ -34,7 +34,7 @@ English | [简体中文](./README.zh-CN.md)
 ## 🌈 Usage
 
 ```bash
-$ npm i arco-cli@latest pnpm -g
+ $ npm i arco-cli@latest pnpm -g
 
 $ arco init my-project
 ```
@@ -46,9 +46,9 @@ $ arco init my-project
 
 ## 💎 Changelog
 
-- [Chinese Version](https://github.com/arco-design/arco-design-pro-vue/blob/main/docs/changelog.zh-CN.md)
+- [Chinese Version](https://github.com/ekworp/arco-design-pro-vue/blob/main/docs/changelog.zh-CN.md)
 
-- [English Version](https://github.com/arco-design/arco-design-pro-vue/blob/main/docs/changelog.md)
+- [English Version](https://github.com/ekworp/arco-design-pro-vue/blob/main/docs/changelog.md)
 
 ## LICENSE
 

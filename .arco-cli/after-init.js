@@ -10,7 +10,7 @@ const logInfo = (messages) => {
 };
 
 module.exports = ({ projectName }) => {
-  const { error } = spawnSync(cmd, ['add', 'arco-design-pro-vue']);
+  const { error } = spawnSync(cmd, ['add', '@ekworp/arco-design-pro-vue']);
 
   if (error) {
     throw error;
