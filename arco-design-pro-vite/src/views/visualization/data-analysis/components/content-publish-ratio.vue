@@ -14,6 +14,7 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue';
+  import Chart from '@/components/chart/index.vue';
   import { ToolTipFormatterParams } from '@/types/echarts';
   import useLoading from '@/hooks/loading';
   import {

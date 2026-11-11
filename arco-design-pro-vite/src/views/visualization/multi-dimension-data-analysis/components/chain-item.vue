@@ -30,6 +30,7 @@
 
 <script lang="ts" setup>
   import { computed, ref } from 'vue';
+  import Chart from '@/components/chart/index.vue';
   import useLoading from '@/hooks/loading';
   import { queryDataChainGrowth, DataChainGrowth } from '@/api/visualization';
   import useChartOption from '@/hooks/chart-option';

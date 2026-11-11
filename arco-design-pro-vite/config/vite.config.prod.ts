@@ -11,6 +11,7 @@ export default mergeConfig(
       configVisualizerPlugin(),
     ],
     build: {
+      cssMinify: 'esbuild',
       rollupOptions: {
         output: {
           manualChunks(id) {

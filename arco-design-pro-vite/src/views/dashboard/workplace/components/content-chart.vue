@@ -19,6 +19,7 @@
 <script lang="ts" setup>
   import { ref } from 'vue';
   import { graphic } from 'echarts/core';
+  import Chart from '@/components/chart/index.vue';
   import useLoading from '@/hooks/loading';
   import { queryContentData, ContentDataRecord } from '@/api/dashboard';
   import useChartOption from '@/hooks/chart-option';

@@ -8,6 +8,7 @@
 </template>
 
 <script lang="ts" setup>
+  import Chart from '@/components/chart/index.vue';
   import useChartOption from '@/hooks/chart-option';
 
   const { chartOption } = useChartOption((isDark) => {

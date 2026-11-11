@@ -36,6 +36,7 @@
   import { computed, ref } from 'vue';
   import { useI18n } from 'vue-i18n';
   import type { LineSeriesOption } from 'echarts';
+  import Chart from '@/components/chart/index.vue';
   import { queryDataOverview } from '@/api/visualization';
   import useLoading from '@/hooks/loading';
   import { ToolTipFormatterParams } from '@/types/echarts';

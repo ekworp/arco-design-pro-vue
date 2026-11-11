@@ -11,6 +11,7 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue';
+  import Chart from '@/components/chart/index.vue';
   import useLoading from '@/hooks/loading';
   import { queryContentPeriodAnalysis } from '@/api/visualization';
   import { ToolTipFormatterParams } from '@/types/echarts';

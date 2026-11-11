@@ -7,6 +7,8 @@
 import { vitePluginForArco } from '@arco-plugins/vite-vue';
 
 export default function configArcoStyleImportPlugin() {
-  const arcoResolverPlugin = vitePluginForArco({});
+  // Component styles are already injected by the custom unplugin resolver.
+  // Disable the legacy JS parser to avoid transforming every source file.
+  const arcoResolverPlugin = vitePluginForArco({ style: false });
   return arcoResolverPlugin;
 }

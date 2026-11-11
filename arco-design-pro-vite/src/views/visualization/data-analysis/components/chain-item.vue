@@ -30,6 +30,7 @@
 
 <script lang="ts" setup>
   import { ref, PropType, CSSProperties } from 'vue';
+  import Chart from '@/components/chart/index.vue';
   import useLoading from '@/hooks/loading';
   import {
     queryPublicOpinionAnalysis,

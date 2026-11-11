@@ -9,7 +9,31 @@
 
 <script lang="ts" setup>
   import { ref, nextTick } from 'vue';
+  import { use } from 'echarts/core';
+  import { CanvasRenderer } from 'echarts/renderers';
+  import { BarChart, LineChart, PieChart, RadarChart } from 'echarts/charts';
+  import {
+    DataZoomComponent,
+    GraphicComponent,
+    GridComponent,
+    LegendComponent,
+    TooltipComponent,
+  } from 'echarts/components';
   import VCharts from 'vue-echarts';
+
+  use([
+    CanvasRenderer,
+    BarChart,
+    LineChart,
+    PieChart,
+    RadarChart,
+    DataZoomComponent,
+    GraphicComponent,
+    GridComponent,
+    LegendComponent,
+    TooltipComponent,
+  ]);
+
   defineProps({
     option: {
       type: Object,

@@ -16,6 +16,7 @@
 </template>
 
 <script lang="ts" setup>
+  import Chart from '@/components/chart/index.vue';
   import useLoading from '@/hooks/loading';
   import useChartOption from '@/hooks/chart-option';
 
