@@ -1,16 +1,18 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import Message from '@ekworp/arco-design-vue/es/message';
+import { loadLocale } from '@/locale';
 
 export default function useLocale() {
   const i18 = useI18n();
   const currentLocale = computed(() => {
     return i18.locale.value;
   });
-  const changeLocale = (value: string) => {
+  const changeLocale = async (value: string) => {
     if (i18.locale.value === value) {
       return;
     }
+    await loadLocale(value);
     i18.locale.value = value;
     localStorage.setItem('arco-locale', value);
     document.documentElement.lang = value;

@@ -1,26 +1,14 @@
 <template>
-  <a-config-provider :locale="locale">
+  <a-config-provider :locale="arcoLocale">
     <router-view />
     <global-setting />
   </a-config-provider>
 </template>
 
 <script lang="ts" setup>
-  import { computed } from 'vue';
-  import enUS from '@ekworp/arco-design-vue/es/locale/lang/en-us';
-  import zhCN from '@ekworp/arco-design-vue/es/locale/lang/zh-cn';
   import GlobalSetting from '@/components/global-setting/index.vue';
+  import { arcoLocale } from '@/locale';
   import useLocale from '@/hooks/locale';
 
-  const { currentLocale } = useLocale();
-  const locale = computed(() => {
-    switch (currentLocale.value) {
-      case 'zh-CN':
-        return zhCN;
-      case 'en-US':
-        return enUS;
-      default:
-        return enUS;
-    }
-  });
+  useLocale();
 </script>
