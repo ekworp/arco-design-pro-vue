@@ -1,11 +1,12 @@
 <script lang="tsx">
-  import { defineComponent, ref, h, compile, computed } from 'vue';
+  import { defineComponent, ref, h, computed } from 'vue';
   import { useI18n } from 'vue-i18n';
   import { useRoute, useRouter, RouteRecordRaw } from 'vue-router';
   import type { RouteMeta } from 'vue-router';
   import { useAppStore } from '@/store';
   import { listenerRouteChange } from '@/utils/route-listener';
   import { openWindow, regexUrl } from '@/utils';
+  import { resolveMenuIcon } from '@/router/routes/icons';
   import useMenuTree from './use-menu-tree';
 
   export default defineComponent({
@@ -94,16 +95,16 @@
           if (_route) {
             _route.forEach((element) => {
               // This is demo, modify nodes as needed
-              const icon = element?.meta?.icon
-                ? () => h(compile(`<${element?.meta?.icon}/>`))
-                : null;
+              const iconValue = element?.meta?.icon;
+              const iconComponent = resolveMenuIcon(iconValue);
+              const icon = iconComponent ? () => h(iconComponent) : null;
               const node =
                 element?.children && element?.children.length !== 0 ? (
                   <a-sub-menu
                     key={element?.name}
                     v-slots={{
                       icon,
-                      title: () => h(compile(t(element?.meta?.locale || ''))),
+                      title: () => t(element?.meta?.locale || ''),
                     }}
                   >
                     {travel(element?.children)}

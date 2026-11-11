@@ -8,3 +8,9 @@ declare module '*.vue' {
 interface ImportMetaEnv {
   readonly VITE_API_BASE_URL: string;
 }
+
+declare module 'virtual:arco-menu-icons' {
+  import type { Component } from 'vue';
+
+  export const menuIcons: Record<string, Component>;
+}

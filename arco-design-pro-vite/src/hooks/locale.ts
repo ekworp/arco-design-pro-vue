@@ -13,6 +13,7 @@ export default function useLocale() {
     }
     i18.locale.value = value;
     localStorage.setItem('arco-locale', value);
+    document.documentElement.lang = value;
     Message.success(i18.t('navbar.action.locale'));
   };
   return {

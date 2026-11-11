@@ -1,6 +1,5 @@
 import { ref, type UnwrapRef } from 'vue';
 import type { AxiosResponse } from 'axios';
-import { HttpResponse } from '@/api/interceptor';
 import useLoading from './loading';
 
 // use to fetch list
@@ -9,7 +8,7 @@ import useLoading from './loading';
 // example: useRequest(api.bind(null, {}))
 
 export default function useRequest<T>(
-  api: () => Promise<AxiosResponse<HttpResponse>>,
+  api: () => Promise<AxiosResponse<T>>,
   defaultValue = [] as unknown as T,
   isLoading = true
 ) {
@@ -17,7 +16,7 @@ export default function useRequest<T>(
   const response = ref<T>(defaultValue);
   api()
     .then((res) => {
-      response.value = res.data as unknown as UnwrapRef<T>;
+      response.value = res.data as UnwrapRef<T>;
     })
     .catch(() => {
       // The interceptor already reports request errors to the user.

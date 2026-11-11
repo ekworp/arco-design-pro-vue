@@ -80,12 +80,12 @@
 
   const type = ref('text');
   const { loading, setLoading } = useLoading();
-  const renderList = ref<TableData[]>();
+  const renderList = ref<TableData[]>([]);
   const fetchData = async (contentType: string) => {
     try {
       setLoading(true);
       const { data } = await queryPopularList({ type: contentType });
-      renderList.value = data;
+      renderList.value = Array.isArray(data) ? data : [];
     } catch (err) {
       // you can report use errorHandler or other
     } finally {

@@ -15,7 +15,15 @@ export default mergeConfig(
       rollupOptions: {
         output: {
           manualChunks(id) {
-            if (id.includes('node_modules/@ekworp/arco-design-vue')) return 'arco';
+            if (id.includes('node_modules/@ekworp/arco-design-vue/es/icon/')) {
+              return 'icons';
+            }
+            if (
+              id.includes('node_modules/@ekworp/arco-design-vue') &&
+              !id.includes('/es/icon/')
+            ) {
+              return 'arco';
+            }
             if (id.includes('node_modules/echarts') || id.includes('node_modules/vue-echarts')) return 'chart';
             if (
               id.includes('node_modules/vue/') ||

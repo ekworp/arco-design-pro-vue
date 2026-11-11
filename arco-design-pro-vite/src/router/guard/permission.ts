@@ -7,7 +7,7 @@ import { appRoutes } from '../routes';
 import { WHITE_LIST, NOT_FOUND } from '../constants';
 
 export default function setupPermissionGuard(router: Router) {
-  router.beforeEach(async (to, from, next) => {
+  router.beforeEach(async (to) => {
     const appStore = useAppStore();
     const userStore = useUserStore();
     const Permission = usePermission();
@@ -37,18 +37,18 @@ export default function setupPermissionGuard(router: Router) {
           );
         }
       }
-      if (exist && permissionsAllow) {
-        next();
-      } else next(NOT_FOUND);
+      if (!(exist && permissionsAllow)) return NOT_FOUND;
     } else {
-      if (permissionsAllow) next();
-      else {
-        const destination =
-          Permission.findFirstPermissionRoute(appRoutes, userStore.role) ||
-          NOT_FOUND;
-        next(destination);
-      }
+      if (permissionsAllow) return true;
+      return (
+        Permission.findFirstPermissionRoute(appRoutes, userStore.role) ||
+        NOT_FOUND
+      );
     }
+    return true;
+  });
+
+  router.afterEach(() => {
     NProgress.done();
   });
 }

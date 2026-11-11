@@ -19,8 +19,9 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed, h, compile } from 'vue';
+  import { computed, h } from 'vue';
   import { useI18n } from 'vue-i18n';
+  import Tag from '@ekworp/arco-design-vue/es/tag';
   import type {
     TableColumnData,
     TableData,
@@ -46,9 +47,11 @@
   ];
   const renderTag = (status: number) => {
     if (status === -1) {
-      return `<a-tag  color="red" class='data-statistic-list-cover-tag'>
-            ${t('monitor.list.tag.auditFailed')}
-        </a-tag>`;
+      return h(
+        Tag,
+        { color: 'red', class: 'data-statistic-list-cover-tag' },
+        () => t('monitor.list.tag.auditFailed')
+      );
     }
     return '';
   };
@@ -66,8 +69,7 @@
           column: TableColumnData;
           rowIndex: number;
         }) {
-          const tmp = `<span>${rowIndex + 1}</span>`;
-          return h(compile(tmp));
+          return h('span', rowIndex + 1);
         },
       },
       {
@@ -79,11 +81,14 @@
           column: TableColumnData;
           rowIndex: number;
         }) {
-          const tmp = `<div class='data-statistic-list-cover-wrapper'>
-              <img src=${record.cover} />
-              ${renderTag(record.status)}
-            </div>`;
-          return h(compile(tmp));
+          return h(
+            'div',
+            { class: 'data-statistic-list-cover-wrapper' },
+            [
+              h('img', { src: record.cover }),
+              renderTag(record.status),
+            ]
+          );
         },
       },
       {

@@ -63,7 +63,10 @@ axios.interceptors.response.use(
       }
       return Promise.reject(new Error(res.msg || 'Error'));
     }
-    return response;
+    return {
+      ...response,
+      data: res.data,
+    };
   },
   (error) => {
     Message.error({

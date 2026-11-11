@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import svgLoader from 'vite-svg-loader';
 import configArcoResolverPlugin from './plugin/arcoResolver.ts';
+import configArcoIconEntryPlugin from './plugin/arcoIconEntry.ts';
 import configArcoStyleImportPlugin from './plugin/arcoStyleImport.ts';
 
 const rootDir = import.meta.dirname;
@@ -13,6 +14,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
     svgLoader({ svgoConfig: {} }),
+    configArcoIconEntryPlugin(),
     configArcoResolverPlugin(),
     configArcoStyleImportPlugin(),
   ],
