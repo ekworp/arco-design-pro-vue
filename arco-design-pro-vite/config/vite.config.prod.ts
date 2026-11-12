@@ -6,6 +6,7 @@ import configVisualizerPlugin from './plugin/visualizer.ts';
 export default mergeConfig(
   {
     mode: 'production',
+    base: process.env.VITE_BASE_PATH || '/',
     plugins: [
       configCompressPlugin('gzip'),
       configVisualizerPlugin(),

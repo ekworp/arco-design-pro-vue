@@ -11,7 +11,7 @@ import App from './App.vue';
 import '@/assets/style/global.less';
 import '@/api/interceptor';
 
-if (import.meta.env.DEV) {
+if (import.meta.env.DEV || import.meta.env.VITE_ENABLE_MOCK === 'true') {
   await import('./mock');
 }
 
