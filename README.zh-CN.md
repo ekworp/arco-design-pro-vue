@@ -38,10 +38,11 @@ Admin 中后台管理页面，创新的多架构方案。
 ## 🌈 Usage
 
 ```bash
-$ npm i arco-cli@latest yarn -g
-
-$ arco init my-project
+$ pnpx @ekworp/arco-design-pro-vue init my-project
 ```
+
+脚手架支持 Vite 和 Vite Simple 模板、包管理器选择、自动安装依赖以及 Git 初始化。
+执行 `--help` 可以查看全部选项。
 
 ## 🔗 Link
 

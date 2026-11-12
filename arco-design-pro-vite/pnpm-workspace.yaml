@@ -3,7 +3,7 @@ allowBuilds:
   vue-echarts: true
 
 minimumReleaseAgeExclude:
-  - '@ekworp/arco-design-vue@2.59.1'
+  - '@ekworp/arco-design-vue@2.59.4'
 
 overrides:
   postcss: 8.5.26

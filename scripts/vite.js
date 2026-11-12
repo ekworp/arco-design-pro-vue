@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const minimist = require('minimist');
 const prettier = require('prettier');
-const prettierOpt = require('./../arco-design-pro-vite/.prettierrc.js');
+const prettierOpt = require('./../arco-design-pro-vite/.prettierrc.cjs');
 
 const params = minimist(process.argv.slice(2));
 const isSimple = params.simple;
@@ -26,10 +26,9 @@ const maps = {
   'src/types': 'src/types',
   'src/utils': 'src/utils',
   'src/views': 'src/views',
-  '.eslintrc.js': '.eslintrc.js',
   '.eslintignore': '.eslintignore',
-  '.stylelintrc.js': '.stylelintrc.js',
-  '.prettierrc.js': '.prettierrc.js',
+  '.stylelintrc.cjs': '.stylelintrc.cjs',
+  '.prettierrc.cjs': '.prettierrc.cjs',
   'tsconfig.json': 'tsconfig.json',
 };
 
@@ -95,67 +94,64 @@ const simplifyFiles = [
   'router/routes/modules/dashboard.ts',
 ];
 
-const runSimpleMode = () => {
-  deleteFiles();
-  simplifyFiles.forEach((el) => {
-    const file = path.resolve(projectPath, path.join('src', el));
-    fs.readFile(file, 'utf8', (err, content) => {
-      if (err) return console.error(err);
-      const main = content.replace(matchReg, '');
-      const formatTxt = prettier.format(main, {
-        ...prettierOpt,
-        parser: 'babel',
-      });
-      fs.writeFile(file, formatTxt, 'utf8', function (err) {
-        if (err) return console.error(err);
-      });
-    });
+const formatFile = async (file, removeSimpleBlocks) => {
+  const content = await fs.readFile(file, 'utf8');
+  const result = removeSimpleBlocks ? content.replace(matchReg, '') : content.replace(regSum, '');
+  const formatted = await prettier.format(result, {
+    ...prettierOpt,
+    parser: file.endsWith('.ts') ? 'typescript' : 'babel',
   });
+  await fs.writeFile(file, formatted, 'utf8');
+};
+
+const runSimpleMode = async () => {
+  deleteFiles();
+  await Promise.all(
+    simplifyFiles.map((el) =>
+      formatFile(path.resolve(projectPath, path.join('src', el)), true)
+    )
+  );
 };
 
 const deleteFiles = () => {
   simpleOptions.forEach((option) => {
     const baseDir = path.resolve(projectPath, option.base);
-    fs.readdir(baseDir, (error, files) => {
-      files.forEach((fileName) => {
-        if (
-          option.excludes &&
-          option.excludes.find((name) =>
-            new RegExp(`^${name}(.(ts|js|vue|json|jsx|tsx))?$`).test(fileName)
-          )
-        ) {
-          return;
-        }
-        fs.remove(path.join(baseDir, fileName));
-      });
+    if (!fs.existsSync(baseDir)) return;
+    fs.readdirSync(baseDir).forEach((fileName) => {
+      if (
+        option.excludes &&
+        option.excludes.find((name) =>
+          new RegExp(`^${name}(.(ts|js|vue|json|jsx|tsx))?$`).test(fileName)
+        )
+      ) {
+        return;
+      }
+      fs.removeSync(path.join(baseDir, fileName));
     });
     if (option.accurate) {
       option.accurate.forEach((el) => {
-        fs.remove(path.join(baseDir, el));
+        fs.removeSync(path.join(baseDir, el));
       });
     }
   });
 };
 
-const runNormalMode = () => {
-  simplifyFiles.forEach((el) => {
-    const file = path.resolve(projectPath, path.join('src', el));
-    fs.readFile(file, 'utf8', (err, content) => {
-      if (err) return console.error(err);
-      const result = content.replace(regSum, '');
-      const formatTxt = prettier.format(result, {
-        ...prettierOpt,
-        parser: 'babel',
-      });
-      fs.writeFile(file, formatTxt, 'utf8', function (err) {
-        if (err) return console.error(err);
-      });
-    });
-  });
+const runNormalMode = async () => {
+  await Promise.all(
+    simplifyFiles.map((el) =>
+      formatFile(path.resolve(projectPath, path.join('src', el)), false)
+    )
+  );
 };
 
 if (isSimple) {
-  runSimpleMode();
+  runSimpleMode().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
 } else {
-  runNormalMode();
+  runNormalMode().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
 }

@@ -1,7 +1,7 @@
 {
   "name": "@ekworp/arco-design-pro-vue",
   "description": "Arco Design Pro for Vue",
-  "version": "2.7.4",
+  "version": "2.7.5",
   "author": "ekworp",
   "license": "MIT",
   "repository": {
@@ -12,6 +12,9 @@
     "url": "https://github.com/ekworp/arco-design-pro-vue/issues"
   },
   "homepage": "https://github.com/ekworp/arco-design-pro-vue#readme",
+  "bin": {
+    "arco-design-pro-vue": "bin/cli.cjs"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -26,6 +29,7 @@
   },
   "files": [
     ".arco-cli",
+    "bin",
     "scripts",
     "arco-design-pro-vite",
     "!/**/node_modules",

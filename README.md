@@ -34,10 +34,12 @@ English | [简体中文](./README.zh-CN.md)
 ## 🌈 Usage
 
 ```bash
- $ npm i arco-cli@latest pnpm -g
-
-$ arco init my-project
+$ pnpx @ekworp/arco-design-pro-vue init my-project
 ```
+
+The CLI supports Vite and Vite Simple templates, package manager selection,
+dependency installation, and Git initialization. Use `--help` to see all
+available options.
 
 ## 🔗 Link
 

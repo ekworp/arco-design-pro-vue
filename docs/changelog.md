@@ -1,5 +1,50 @@
 # Arco Design Pro Vue v2.0
 
+## v2.7.5
+
+`2026-11-12`
+
+### 🆕 Feature
+
+- Added a standalone CLI entry for one-command project creation with `pnpx @ekworp/arco-design-pro-vue init`.
+- Added interactive and non-interactive project generation options, including template, package manager, dependency installation, Git initialization, overwrite, and force modes.
+
+### 💎 Optimization
+
+- Updated the template to `@ekworp/arco-design-vue` `2.59.4`.
+- Improved generated project package names and removed lockfiles that do not match the selected package manager.
+- Updated the template generator for `.cjs` configuration files and asynchronous Prettier 3 formatting.
+- Added Vite and Vite Simple usage documentation for the published CLI package.
+
+## v2.7.4
+
+`2026-11-11`
+
+### 🆕 Feature
+
+- Added browser-language detection and user-selectable locale persistence.
+- Added dynamic loading for business messages and Arco component locales.
+- Added build-time route icon discovery while keeping route metadata as string values such as `icon: 'icon-dashboard'`.
+- Added a shared `icons` chunk containing only the icons used by the navigation routes.
+- Added GitHub Actions checks and npm Trusted Publishing support for the fork package.
+
+### 💎 Optimization
+
+- Updated the Vue template toolchain and dependency versions, including Vite 8, Vue 3.5, and pnpm 11 support.
+- Switched the production component library to the `@ekworp/arco-design-vue` fork.
+- Optimized automatic Arco component imports and removed unnecessary global component registration.
+- Lazy-loaded chart resources and kept ECharts out of the initial page preload.
+- Modernized Vite and CommonJS configuration files for the current ESM toolchain.
+- Removed unused `esbuild` from the template’s direct development dependencies.
+
+### 🐛 Bugfix
+
+- Removed deprecated router guard callbacks and resolved runtime navigation warnings.
+- Replaced runtime template compilation with VNode rendering for dynamic menu and table content.
+- Fixed unresolved component warnings for dynamic menu icons and tags.
+- Fixed workplace popular-content table initialization and API response unwrapping.
+- Updated request, notification, and loading behavior to use the forked Arco component modules.
+
 ## v2.7.3
 
 `2023-04-26`

@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@ekworp/arco-design-vue':
-        specifier: ^2.59.1
-        version: 2.59.1(vue@3.5.45(typescript@6.0.3))
+        specifier: ^2.59.4
+        version: 2.59.4(vue@3.5.45(typescript@6.0.3))
       '@vueuse/core':
         specifier: ^15.0.0
         version: 15.0.0(vue@3.5.45(typescript@6.0.3))
@@ -478,8 +478,8 @@ packages:
     peerDependencies:
       postcss-selector-parser: ^7.1.1
 
-  '@ekworp/arco-design-vue@2.59.1':
-    resolution: {integrity: sha512-qViYIu2q5k85Za/sttHNTY07rUlPYb6q/+VJui52OU4dUDRop5uIk73U0J3XLmMIfaKwOJXmoupOROMJUyaiZA==}
+  '@ekworp/arco-design-vue@2.59.4':
+    resolution: {integrity: sha512-kk/2fYjZxj5UUttrUdBYbsxNi+/x2Os1vgrXtMZdlYqs8Do42MGEalJEXyfvERKgGVMFZWyJ8PPdevta44UeIA==}
     peerDependencies:
       vue: '>=3.1.0'
 
@@ -3928,7 +3928,7 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.2.0
 
-  '@ekworp/arco-design-vue@2.59.1(vue@3.5.45(typescript@6.0.3))':
+  '@ekworp/arco-design-vue@2.59.4(vue@3.5.45(typescript@6.0.3))':
     dependencies:
       '@arco-design/color': 0.4.0
       b-tween: 0.3.3
